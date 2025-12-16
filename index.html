@@ -4,122 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sucursales Farmacia Estrella</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* --- ESTILOS GENERALES --- */
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(180deg, #A8E6CF 0%, #5D9CEC 100%);
             margin: 0;
-            padding: 20px;
+            padding: 20px 10px; /* Menos padding lateral en móviles */
             color: #333;
             min-height: 100vh;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.98);
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 25px 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+
+        /* --- CABECERA Y LOGO --- */
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        .logo-text {
-            color: #0056b3;
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: bold;
+        .logo-img {
+            max-width: 180px; /* Ajusta el tamaño del logo */
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
         }
         .subtitle {
             margin-top: 5px;
-            color: #555;
+            color: #666;
+            font-weight: 500;
         }
-        .sucursal {
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
+
+        /* --- BOTÓN WHATSAPP GENERAL --- */
+        .whatsapp-gral {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
             padding: 15px;
-            margin-bottom: 15px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s;
         }
+        .whatsapp-gral:active { transform: scale(0.98); }
+        .btn-icon { margin-right: 10px; font-size: 1.4rem;}
+
+        /* --- ESTILOS DE SUCURSALES --- */
+        .sucursal {
+            border: 1px solid #edf2f7;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        /* Estilo especial para la sucursal destacada (24hs) */
+        .featured-sucursal {
+            border: 2px solid #FFD700; /* Borde dorado */
+            background: linear-gradient(to bottom right, #ffffff, #fffbe6);
+            position: relative; /* Para poder colocar la etiqueta */
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.15);
+        }
+        
+        .badge-24hs {
+            position: absolute;
+            top: -12px;
+            right: 15px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            font-weight: 900;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
         .sucursal-titulo {
-            font-weight: bold;
+            font-weight: 700;
             color: #0056b3;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #A8E6CF;
-            padding-bottom: 5px;
         }
+        .featured-sucursal .sucursal-titulo {
+             border-bottom-color: #FFD700; /* Línea dorada en la destacada */
+        }
+
         .info-row {
             margin-bottom: 8px;
             font-size: 0.95rem;
-            line-height: 1.4;
+            line-height: 1.5;
+            color: #555;
         }
         .label {
-            font-weight: bold;
-            color: #444;
+            font-weight: 700;
+            color: #333;
         }
+
+        /* --- CONTENEDOR DE DOBLE BOTÓN --- */
         .btn-container {
             display: flex;
-            gap: 10px;
-            margin-top: 12px;
-            flex-wrap: wrap;
+            gap: 10px; /* Espacio entre botones */
+            margin-top: 15px;
         }
+
         .btn {
-            flex: 1;
+            flex: 1; /* Los botones ocupan el mismo ancho */
             text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 20px;
+            padding: 10px 5px;
+            border-radius: 50px;
             font-size: 0.9rem;
-            font-weight: bold;
+            font-weight: 700;
             text-align: center;
-            display: inline-block;
-            min-width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.2s;
         }
+        .btn:active { opacity: 0.8; }
+
         .btn-call {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Azul corporativo */
             color: white;
         }
-        .whatsapp-gral {
-            display: block;
-            background-color: #25D366;
+        .btn-wp {
+            background-color: #25D366; /* Verde WhatsApp */
             color: white;
-            text-align: center;
-            padding: 15px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        .small-icon { margin-right: 6px; font-size: 1.1rem;}
+
         .footer {
             text-align: center;
             margin-top: 30px;
             font-size: 0.8rem;
-            color: #666;
+            color: #888;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header>
-            <div class="logo-text">Farmacia Estrella</div>
-            <div class="subtitle">Nuestras Sucursales en Córdoba</div>
+            <img src="logo-estrella.png" alt="Logo Farmacia Estrella" class="logo-img">
+            <div class="subtitle">Nuestras 9 Sucursales en Córdoba</div>
         </header>
 
-        <a href="https://wa.me/5493516135446" class="whatsapp-gral">💬 WhatsApp General</a>
+        <a href="https://wa.me/5493513841662" class="whatsapp-gral">
+            <span class="btn-icon">💬</span> Hablar con una Farmacéutica
+        </a>
 
-        <div class="sucursal">
+        <div class="sucursal featured-sucursal">
+            <div class="badge-24hs">⭐ ABIERTO 24 HS</div>
             <div class="sucursal-titulo">📍 ESTRELLA 1 - Centro</div>
             <div class="info-row">🏠 Chacabuco 205</div>
-            <div class="info-row"><span class="label">⏰ Horario:</span> 24hs todo el año.</div>
             <div class="btn-container">
-                <a href="tel:+5493515107537" class="btn btn-call">📞 351 5107537</a>
+                <a href="tel:+5493515107537" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493515107537" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -127,8 +182,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 2 - Nva. Córdoba</div>
             <div class="info-row">🏠 Ambrosio Olmos 606</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Jue: 8-23hs | Vie: 8-24hs<br>Sáb: 00-1am y 9-24hs<br>Dom: 00-7am</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493512417521" class="btn btn-call">📞 351 2417521</a>
+                <a href="tel:+5493512417521" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493512417521" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -136,8 +193,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 3 - Alta Córdoba</div>
             <div class="info-row">🏠 J. A. Lavalleja 1207</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8:30-23hs<br>Sáb: 9-13hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493512109949" class="btn btn-call">📞 351 2109949</a>
+                <a href="tel:+5493512109949" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493512109949" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -145,8 +204,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 4 - San Martín</div>
             <div class="info-row">🏠 Castro Barros 555</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8-22hs<br>Sáb: 9-13hs y 17-21hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493516889646" class="btn btn-call">📞 351 6889646</a>
+                <a href="tel:+5493516889646" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493516889646" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -154,8 +215,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 5 - Poeta Lugones</div>
             <div class="info-row">🏠 M. P. Cabrera 4453</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8:30-21:30hs<br>Sáb: 9-13hs y 17-21hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493516351961" class="btn btn-call">📞 351 6351961</a>
+                <a href="tel:+5493516351961" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493516351961" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -163,8 +226,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 6 - Centro</div>
             <div class="info-row">🏠 Colón 1161</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8-21hs | Sáb: 9-13hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493513473170" class="btn btn-call">📞 351 3473170</a>
+                <a href="tel:+5493513473170" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493513473170" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -172,8 +237,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 7 - Centro</div>
             <div class="info-row">🏠 Jujuy 137</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8-21hs | Sáb: 9-13hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493516347743" class="btn btn-call">📞 351 6347743</a>
+                <a href="tel:+5493516347743" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493516347743" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -181,8 +248,10 @@
             <div class="sucursal-titulo">📍 ESTRELLA 8 - Docta</div>
             <div class="info-row">🏠 Docta Urbanización (Mz 33 Lote 11)</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 9-22hs<br>Sáb: 9-13hs y 17-21hs<br>Dom: 17-22hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493512272567" class="btn btn-call">📞 351 2272567</a>
+                <a href="tel:+5493512272567" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493512272567" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
@@ -190,13 +259,15 @@
             <div class="sucursal-titulo">📍 ESTRELLA 9 - B. O'Higgins</div>
             <div class="info-row">🏠 B. O'Higgins 3331</div>
             <div class="info-row"><span class="label">⏰ Horario:</span><br>Lun-Vie: 8:30-20hs | Sáb: 9-20hs</div>
+            
             <div class="btn-container">
-                <a href="tel:+5493516621919" class="btn btn-call">📞 351 6621919</a>
+                <a href="tel:+5493516621919" class="btn btn-call"><span class="small-icon">📞</span>Llamar</a>
+                <a href="https://wa.me/5493516621919" class="btn btn-wp"><span class="small-icon">💬</span>WhatsApp</a>
             </div>
         </div>
 
         <div class="footer">
-            <p>© Farmacia Estrella</p>
+            <p>© 2024 Farmacia Estrella - Córdoba</p>
         </div>
     </div>
 </body>
